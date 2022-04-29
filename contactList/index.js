@@ -1,10 +1,52 @@
 const express = require("express");
+const path = require("path");
+const bodyParser = require("body-parser");
 const port = 8000;
 
 const app = express();
 
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+var contactList = [
+  {
+    name: "prajwal",
+    phone: "1111111111",
+  },
+  {
+    name: "vipul",
+    phone: "0123456789",
+  },
+  {
+    name: "anil",
+    phone: "0000000000",
+  },
+  {
+    name: "sheetal",
+    phone: "98786543210",
+  },
+];
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use((req, res, next) => {
+  console.log("Middleware 1");
+});
+
 app.get("/", (req, res) => {
-  res.send("<h1>Cool it is running</h1>");
+  return res.render("home", {
+    title: "My contact List",
+    contact_list: contactList,
+  });
+});
+
+app.post("/create_contact", (req, res) => {
+  const new_contact = {
+    name: req.body.name,
+    phone: req.body.phone,
+  };
+  contactList.push(new_contact);
+  return res.redirect("/");
 });
 
 app.listen(port, (err) => {
