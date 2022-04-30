@@ -30,7 +30,11 @@ var contactList = [
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
-  console.log("Middleware 1");
+  var today = new Date();
+  var time =
+    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  console.log("Middleware 1 at :" + time);
+  next();
 });
 
 app.get("/", (req, res) => {
@@ -48,6 +52,12 @@ app.post("/create_contact", (req, res) => {
   contactList.push(new_contact);
   return res.redirect("/");
 });
+
+// app.get("/delete-contact/", function (req, res) {
+//   console.log(req.query.phone);
+//   console.log(req.query.name);
+//   return res.redirect("/");
+// });
 
 app.listen(port, (err) => {
   if (err) {
