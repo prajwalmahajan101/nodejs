@@ -1,0 +1,56 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+
+
+}
+
+#page-heading{
+    text-align: center;
+    margin-top: 25px;
+    color:grey;
+
+}
+
+ul{
+    list-style: none;
+}
+
+li{
+    background-color: blueviolet;
+    color: aquamarine;
+    font-size: large;
+    font-weight: bolder;
+    border: 2px solid cyan;
+    border-radius: 3px;
+    margin: auto;
+    margin-bottom: 5px;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+
+}
+.name{
+    display: inline;
+    text-align: center;
+    margin: auto;
+}
+.phone{
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+}
+
+.center{
+    display: grid;
+    align-items: center;
+}
+
+.center input{
+    margin: auto;
+}
+
+.center button{
+    display: inline-flex;
+    align-self: flex-end;
+}

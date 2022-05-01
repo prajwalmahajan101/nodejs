@@ -29,14 +29,7 @@ var contactList = [
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use((req, res, next) => {
-  var today = new Date();
-  var time =
-    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  console.log("Middleware 1 at :" + time);
-  next();
-});
-
+app.use(express.static('assets'));
 app.get("/", (req, res) => {
   return res.render("home", {
     title: "My contact List",
